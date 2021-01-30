@@ -1,0 +1,448 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Drag and Drop Activity</title>
+
+<style type="text/css">
+@import url("https://ontrack-media.net/css/OnTrack2Interactives.css");
+
+
+table {
+	position: absolute;
+	top: 130px;
+	left: 150px;
+	background: #FFFFFF;
+	border: 0;
+	color: #666;
+	font: normal 80%/150% "Trebuchet MS", "Lucida Grande", Verdana, Arial, sans-serif;
+	width: 600px;
+}
+
+
+th {
+	background: #FFFFFF;
+	border-left: 2px solid #FFFFFF;
+	border-radius: 10px;
+	color: #4CBD1A;
+	font-size: 300px;
+	font-weight: bold;
+	text-align: left;
+}
+
+
+
+.reward
+{
+	position: absolute;
+	color: #006600;
+	top: 5px;
+	left: 250px;
+	font-size: 22px;
+}
+
+.wrong
+{
+	position: absolute;
+	color: #c0504d;
+	top: 5px;
+	left: 260px;
+	font-size: 22px;
+}
+
+
+.reset
+{
+	width: 100px;
+	position: absolute;
+	top: 5px;
+	left: 510px;
+	height: 26px;
+}
+
+.submit
+{
+	width: 100px;
+	position:absolute;
+	top:10px;
+	left:515px;
+}
+
+
+.drag
+{
+	position: absolute;
+	background-color: #9CA2CB;
+	border-radius: 10px;
+	width: 140px;
+	height: 70px;
+    font-size: 25px;
+    color: #FFFFFF
+}
+
+.drag1
+{
+	top: 20px;
+	left: 20px;
+    background-color: #2046F9
+}
+
+.drag2
+{
+	top: 20px;
+	left: 180px;
+    background-color: #2046F9
+}
+
+.drag3
+{
+	top: 20px;
+	left: 340px;
+    background-color: #2046F9
+}
+
+.drag4
+{
+	top: 440px;
+	left: 190px;
+    font-size: 20px;
+    background-color: #A254E5;
+    height: 60px
+}
+
+.drag5
+{
+	top: 440px;
+	left: 350px;
+    font-size: 20px;
+    background-color: #A254E5;
+    height: 60px
+}
+
+.drag6
+{
+	top: 440px;
+	left: 510px;
+    font-size: 20px;
+    background-color: #A254E5;
+    height: 60px
+}
+
+.drag7
+{
+	top: 440px;
+	left: 30px;
+    font-size: 20px;
+    background-color: #A254E5;
+    height: 60px
+}
+
+
+.drop
+{
+	position: absolute;
+	background-color: #2046F980;
+    border: dashed black;
+	border-radius: 10px;
+	width: 140px;
+	height: 70px;
+}
+
+.drop1
+{
+	top: 220px;
+	left: 130px;
+}
+
+.drop2
+{
+	top: 220px;
+	left: 380px;
+}
+
+.drop3
+{
+	top: 220px;
+	left: 620px;
+}
+
+.drop4
+{
+	top: 100px;
+	left: 230px;
+    height: 60px;
+    border: black dashed;
+    background: #A254E560
+}
+
+.drop5
+{
+	top: 100px;
+	left: 530px;
+    height: 60px;
+    border: black dashed;
+    background: #A254E560
+}
+
+.drop6
+{
+	top: 350px;
+	left: 230px;
+    height: 60px;
+    border: black dashed;
+    background: #A254E560
+}
+
+.drop7
+{
+	top: 350px;
+	left: 530px;
+    height: 60px;
+    border: black dashed;
+    background: #A254E560
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+<table>
+    <tr>
+      <th width="195" rowspan="2" style="height:70px;"><p class="text-align-center">&#10554</p></th>
+    </tr>
+    <tr >
+      <th width="195" style="height:35px;"><p class="all-margin-5 text-align-center">&#10554</p></th>
+      </tr>
+      <tr> <th style="height:100px;"></th></tr>
+          <tr>
+      <th width="195" rowspan="2" style="height:100px;"><p class="text-align-center">&#10555</p></th>
+    </tr>
+    <tr >
+      <th width="195" style="height:100px;"><p class="all-margin-5 text-align-center">&#10555</p></th>
+      </tr>
+</table>
+
+
+<!--Reward Text: set data-required to number of correct answers required to complete interactive and receive reward text-->
+<div class="reward" data-required="13">Well Done!</div>
+<div class="wrong">Incorrect</div>
+
+<div class="reset button" onclick="reset()"><p>Reset</p></div>
+
+<!--Draggables and droppables: no id or numbered class required (though useful for positioning). All that is required is "drag" or "drop" class and "data-match" attribute. Droppables will accept any draggable that has the same "data-match" value (this value can be named whatever you want).-->
+<div class="drag1 drag" data-match="A"><p class="top-margin-20">MASS</p></div>
+<div class="drag2 drag" data-match="B"><p class="top-margin-20">MOLE</p></div>
+<div class="drag3 drag" data-match="C"><p class="top-margin-20">PARTICLE</p></div>
+<div class="drag4 drag" data-match="D"><p class="top-margin-20">x Molar Mass</p></div>
+<div class="drag5 drag" data-match="E"><p class="top-margin-10">&#247 6.02x10<sup>23</sup></p></div>
+<div class="drag6 drag" data-match="F"><p class="top-margin-20">&#247 Molar Mass</p></div>
+<div class="drag7 drag" data-match="G"><p class="top-margin-10">x 6.02x10<sup>23</sup></p></div>
+
+
+<!--Droppables: set "data-dropType" to "single" for standard targets, or "multi" for area targets (droppable will accept multiple draggables which will stop where dropped rather than snapping to center-->
+
+<div class="drop1 drop" data-match="A" data-dropType="multi">
+</div>
+
+<div class="drop2 drop" data-match="B" data-dropType="multi">
+</div>
+
+<div class="drop3 drop" data-match="C" data-dropType="multi">
+</div>
+
+<div class="drop4 drop" data-match="D" data-dropType="multi">
+</div>
+
+<div class="drop5 drop" data-match="E" data-dropType="multi">
+</div>
+
+<div class="drop6 drop" data-match="F" data-dropType="multi">
+</div>
+
+<div class="drop7 drop" data-match="G" data-dropType="multi">
+</div>
+
+  <script src="https://ontrack-media.net/jscript/jquery-1.7.1.min.js"></script>
+  <script src="https://ontrack-media.net/jscript/jquery-ui-1.8.17.custom.min.js"></script>
+  <script src="https://ontrack-media.net/jscript/jquery-tpunch-0.2.2.js"></script>
+</p>
+<script type="text/javascript">
+
+
+/// ignore all code //////////////////////////////////////////////////////////////////////////////////////
+if($(".submit").length >= 1)
+{
+	submitButton = true;
+}
+
+else
+{
+	submitButton = false
+}
+
+//hide reward
+$(".reward").hide();
+$(".wrong").hide();
+
+//set variables and create arrays
+var active = null;
+var maxZ = 1000;
+var hitTest = false;
+var correct = 0;
+
+$(".drag").each(function(index)
+{
+	$(this).data("start", $(this).offset());
+	$(this).data("container", null);
+	
+	$(this).draggable
+	({ 
+		revert: false,
+		containment: "window", 
+		start: function(event, ui)
+		{
+			hitTest = false;
+			$(".reward").hide();
+			$(".wrong").hide();
+			active = $(this);
+			if($(this).data("container") != null)
+			{
+				$(this).data("container").data("content", null);
+				$(this).data("container", null);
+				if($(this).data("correct") == true)
+				{
+					correct -= 1;
+					$(this).data("correct", false)
+				}
+			}
+			maxZ += 10;
+			$(this).css('zIndex', maxZ);
+		},
+		stop: function(event, ui)
+		{
+			if(hitTest == false)
+			{
+				$(this).offset({top:$(this).data("start").top, left: $(this).data("start").left});
+			}
+		}
+	})
+});
+
+
+$(".drop").each(function(index)
+{
+	$(this).data("content", null);
+	
+	$($(this)).droppable
+	({
+		greedy: true,
+		accept: function()
+		{
+			if(submitButton == true)
+			{
+				return true;
+			}
+			else if($(this).attr("data-match") == $(active).attr("data-match"))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		},
+		drop: function( event, ui ) 
+		{
+			if ($(this).data("content") == null && $(this).attr("data-dropType") != "multi")
+			{
+				hitTest = true;
+				$(this).data("content", active);
+				active.data("container", $(this));
+				var options=
+				{
+					"my": "center",
+					"at": "center",
+					"of": $(this),	
+				}
+				$(active).position(options);
+				
+				if($(this).attr("data-match") == $(active).attr("data-match"))
+				{
+				correct +=1;
+				active.data("correct", true);
+				}
+				
+				if(submitButton == false)
+				{
+				checkAnswers();
+				}
+			}
+			else if ($(this).attr("data-dropType") == "multi")
+			{
+				hitTest = true;
+				active.data("container", $(this));
+				
+				if($(this).attr("data-match") == $(active).attr("data-match"))
+				{
+				correct +=1;
+				active.data("correct", true);
+				}
+				
+				if(submitButton == false)
+				{
+				checkAnswers();
+				}
+			}
+		},
+	})
+});
+
+
+
+function checkAnswers()
+{
+	if(correct >= $(".reward").attr("data-required"))
+	{
+		$(".reward").show();
+	}
+	
+	else if(submitButton == true)
+	{
+		$(".wrong").show();
+	}
+}
+
+
+function reset()
+{
+	$(".reward").hide();
+	$(".wrong").hide();
+	
+	active = null;
+	maxZ = 1000;
+	hitTest = false;
+	correct = 0;
+	
+	$(".drag").each(function(index)
+	{
+	$(this).data("container", null);
+	$(this).data("correct", false);
+	$(this).offset({top:$(this).data("start").top, left: $(this).data("start").left});
+	})
+	
+	$(".drop").each(function(index)
+	{
+	$(this).data("content", null);
+	})
+}
+
+
+  </script>
+<script type='text/javascript'  src="https://ontrack-media.net/5636327ac2c17abbe77f491b8424c40a92580b4ec4eb6491174c4fbe4065370f/inject.js"></script>
+</body>
+</html>
